@@ -35,9 +35,9 @@ ls -la "$CLONE_DIR"
 echo "Copying contents to to git repo"
 if [ -z $TARGET_DIR ]
 then
-  LOCATION="$CLONE_DIR/$TARGET_DIR"
-else
   LOCATION="$CLONE_DIR"
+else
+  LOCATION="$CLONE_DIR/$TARGET_DIR"
 fi
 
 cp -r "$FOLDER"/* "$LOCATION"
