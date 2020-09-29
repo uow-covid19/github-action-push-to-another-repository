@@ -38,6 +38,10 @@ then
   LOCATION="$CLONE_DIR"
 else
   LOCATION="$CLONE_DIR/$TARGET_DIR"
+  if [ ! -d $LOCATION ]
+  then
+    mkdir $LOCATION
+  fi
 fi
 
 cp -r "$FOLDER"/* "$LOCATION"
