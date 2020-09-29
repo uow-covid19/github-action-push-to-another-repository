@@ -7,6 +7,7 @@ GITHUB_REPO="$3"
 USER_EMAIL="$4"
 REPO_USERNAME="$5"
 TARGET_BRANCH="$6"
+TARGET_DIR="$7"
 
 if [ -z "$REPO_USERNAME" ]
 then
@@ -32,8 +33,15 @@ find "$CLONE_DIR" | grep -v "^$CLONE_DIR/\.git" | grep -v "^$CLONE_DIR$" | xargs
 ls -la "$CLONE_DIR"
 
 echo "Copying contents to to git repo"
-cp -r "$FOLDER"/* "$CLONE_DIR"
-cd "$CLONE_DIR"
+if [ -z $TARGET_DIR ]
+then
+  LOCATION="$CLONE_DIR/$TARGET_DIR"
+else
+  LOCATION="$CLONE_DIR"
+fi
+
+cp -r "$FOLDER"/* "$LOCATION"
+cd "$LOCATION"
 ls -la
 
 echo "Adding git commit"

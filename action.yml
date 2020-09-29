@@ -19,6 +19,9 @@ inputs:
   target-branch:
     description: '[Optional] set target branch name for the destination repository'
     required: false
+  target-directory:
+    description: '[Optional] subdirectory of destination repository to copy to'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -29,6 +32,7 @@ runs:
     - ${{ inputs.user-email }}
     - ${{ inputs.destination-repository-username }}
     - ${{ inputs.target-branch }}
+    - ${{ inputs.target-directory }}
 branding:
   icon: 'git-commit'
   color: 'green'
